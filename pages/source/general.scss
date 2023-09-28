@@ -1,0 +1,286 @@
+// fonts===============================================================================================================================
+@font-face {
+    font-family: 'Arial';
+    src: url('../../../assets/fonts/ArialMT.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Arial';
+    src: url('../../../assets/fonts/Arial-BoldMT.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Arial';
+    src: url('../../../assets/fonts/Arial-Black.woff2') format('woff2');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Arial';
+    src: url('../../../assets/fonts/Arial-ItalicMT.woff2') format('woff2');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Arial';
+    src: url('../../../assets/fonts/Arial-BoldItalicMT.woff2') format('woff2');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Arial Narrow';
+    src: url('../../../assets/fonts/ArialNarrow-Bold.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Arial Narrow';
+    src: url('../../../assets/fonts/ArialNarrow-BoldItalic.woff2') format('woff2');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Arial Narrow';
+    src: url('../../../assets/fonts/ArialNarrow.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Arial Narrow';
+    src: url('../../../assets/fonts/ArialNarrow-Italic.woff2') format('woff2');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Georgia';
+    src: url('../../../assets/fonts/Georgia-Italic.woff2') format('woff2');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Georgia';
+    src: url('../../../assets/fonts/Georgia.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Georgia';
+    src: url('../../../assets/fonts/Georgia-BoldItalic.woff2') format('woff2');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Georgia';
+    src: url('../../../assets/fonts/Georgia-Bold.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+// fonts===============================================================================================================================
+$desktop: 1280px;
+$tablet: 768px;
+$mobile: 320px;
+$desktopContainer: 1230;
+$tabletContainer: 738;
+
+@mixin adaptive-value($property, $startSize, $minSize1, $minSize2: false) {
+    #{$property}: $startSize + px;
+
+    @if not ($startSize == $minSize1) {
+        @media (max-width: #{$desktopContainer + px}) {
+            $addSize: $startSize - $minSize1;
+            #{$property}: calc(#{$minSize1 + px} + #{$addSize} * ((100vw - 768px) / #{$desktopContainer - 768}));
+        }
+    }
+
+    @media (max-width: #{$tabletContainer + px}) {
+
+        @if $minSize2 {
+            $addSize: $minSize1 - $minSize2;
+            #{$property}: calc(#{$minSize2 + px} + #{$addSize} * ((100vw - 320px) / #{$tabletContainer - 320}));
+
+        }
+
+        @else {
+            #{$property}: $minSize1 + px;
+        }
+    }
+
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Georgia';
+    font-size: 15px;
+    color: #545454;
+}
+
+.wrapper {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.main {
+    flex: auto;
+}
+
+[class*="container"] {
+    max-width: 1230px;
+    margin: 0 auto;
+    padding: 0 15px;
+
+    @media(max-width: $tablet) {
+        max-width: 738px;
+    }
+
+    @media(max-width: $mobile) {
+        max-width: 320px;
+        padding: 0 10px;
+    }
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    // .logo__title
+    &__title {
+        margin-bottom: 10px;
+        font-size: 32px;
+        line-height: 110%;
+        letter-spacing: 0.06em;
+        color: #f1cdb3;
+    }
+
+    // .logo__subtitle
+    &__subtitle {
+        font-family: 'Arial';
+        font-size: 13px;
+        line-height: 115%;
+        letter-spacing: 0.1em;
+        color: #ffffff;
+    }
+
+    // .logo_pets
+    &_pets {
+        .logo__title {
+            color: #545454;
+        }
+
+        .logo__subtitle {
+            color: #292929;
+        }
+    }
+}
+
+.title {
+    @include adaptive-value('font-size', 35, 35, 25);
+    line-height: 130%;
+    letter-spacing: 0.06em;
+
+    &_w {
+        color: #ffffff;
+    }
+}
+
+.button {
+    display: inline-block;
+    padding: 15px 45px;
+    font-size: 17px;
+    line-height: 130%;
+    letter-spacing: 0.06em;
+    color: #292929;
+    background-color: #F1CDB3;
+    border-radius: 100px;
+    transition: all 0.3s;
+
+    &:hover {
+        background-color: #FDDCC4;
+    }
+
+    &:active {
+        background-color: #ffffff;
+    }
+
+    &_border {
+        padding: 13px 43px;
+        background-color: #ffffff;
+        border: 2px solid #F1CDB3;
+
+        &:active {
+            background-color: #FDDCC4;
+            opacity: 0.7;
+        }
+    }
+}
+
+.card {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    background: #FAFAFA;
+    padding-bottom: 30px;
+    border-radius: 9px;
+    transition: all 0.3s;
+
+    &:hover {
+        background: #ffffff;
+        box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
+    }
+
+    &:hover &__button {
+        background-color: #FDDCC4;
+        border-color: #FDDCC4;
+    }
+
+    &>*:not(:last-child) {
+        margin-bottom: 30px;
+    }
+
+    // .card__image
+    &__image {}
+
+    // .card__name
+    &__name {
+        font-size: 20px;
+        line-height: 115%;
+        letter-spacing: 0.06em;
+    }
+
+    // .card__button
+    &__button {}
+}

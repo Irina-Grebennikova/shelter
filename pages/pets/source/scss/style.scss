@@ -1,0 +1,76 @@
+@import '../../../source/null.scss';
+@import '../../../source/general.scss';
+@import '../../../source/header.scss';
+@import '../../../source/footer.scss';
+@import '../../../source/popup.scss';
+
+.main {
+    @include adaptive-value('padding-top', 200, 200, 162);
+    @include adaptive-value('padding-bottom', 101, 76, 42);
+    background: #F6F6F6;
+    // .main__container
+    &__container {
+    }
+    // .main__title
+    &__title {
+        line-height: 128%;
+        text-align: center;
+        @include adaptive-value('margin-bottom', 60, 30, 42);
+    }
+    // .main__cards
+    &__cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px 40px;
+        @include adaptive-value('margin-bottom', 58, 40, 41);
+    }
+    // .main__card
+    &__card {
+    }
+    // .main__pagination
+    &__pagination {
+        display: flex;
+        justify-content: center;
+        @include adaptive-value('gap', 20, 20, 10);
+    }
+}
+.pagination {
+    // .pagination__controls
+    &__controls {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 52px;
+        height: 52px;
+        border: 2px solid #f1cdb3;
+        border-radius: 100px;
+        font-size: 20px;
+        line-height: 115%;
+        letter-spacing: 0.06em;
+        cursor: pointer;
+        transition: all 0.3s;
+        @media (hover:hover) {
+            &:hover:not(.controls-inactive, .controls-active) {
+                background: #fddcc4;
+                border-color: #fddcc4;
+            }
+        }
+    }
+}
+
+.controls-active, .pagination__controls:not(.controls-inactive):active {
+    background-color: #f1cdb3;
+}
+
+.controls-active {
+    cursor: default;
+}
+
+.controls-inactive {
+    cursor: default;
+    color: #cdcdcd;
+    border-color: #cdcdcd;
+}
+
+

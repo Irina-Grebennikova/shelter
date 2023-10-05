@@ -450,7 +450,7 @@ body {
     transition: all 0.3s ease 0s;
   }
   .header__burger_black::before, .header__burger_black::after,
-.header__burger_black span {
+  .header__burger_black span {
     background-color: #000;
   }
   .header__nav {
@@ -492,7 +492,7 @@ body {
     margin-bottom: 43px;
   }
   .link-active::after,
-.header__link:active::after {
+  .header__link:active::after {
     bottom: -2px;
   }
 }
@@ -696,8 +696,8 @@ body.lock {
   width: 100%;
   height: 100%;
   background-color: rgba(41, 41, 41, 0.6);
-  -webkit-transition: 0.8s;
-  transition: 0.8s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 .popup.visible {
   opacity: 1;
@@ -717,7 +717,7 @@ body.lock {
 }
 .popup__content {
   max-width: 900px;
-  background: #FAFAFA;
+  background: #fafafa;
   -webkit-box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
           box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
   position: relative;
@@ -751,7 +751,7 @@ body.lock {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  border: 2px solid #F1CDB3;
+  border: 2px solid #f1cdb3;
   border-radius: 100px;
   cursor: pointer;
 }
@@ -888,7 +888,7 @@ body.lock {
   top: calc(50% - 2px);
   width: 4px;
   height: 4px;
-  background: #F1CDB3;
+  background: #f1cdb3;
   border-radius: 50%;
 }
 
